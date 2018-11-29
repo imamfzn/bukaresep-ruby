@@ -2,8 +2,7 @@ require 'json'
 
 module Bukaresep
 	class Recipe
-		attr_reader		:id
-		attr_accessor 	:name, :description, :ingredients, :instructions
+		attr_accessor :id, :name, :description, :ingredients, :instructions
 
 		def initialize(id = nil, name, description, ingredients, instructions)
 			@id 			= id
