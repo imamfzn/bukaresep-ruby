@@ -1,23 +1,27 @@
+# frozen_string_literal: true
+
 module Bukaresep
-	class Repository
-		def get(id)
-			raise "please implement get method"
-		end
 
-		def get_alll
-			raise "please implement get_all method"
-		end
+  # Repository interface
+  class Repository
+    def get(_id)
+      raise 'please implement get method'
+    end
 
-		def add(recipe)
-			raise "please implement add method"
-		end
+    def get_all
+      raise 'please implement get_all method'
+    end
 
-		def update(recipe)
-			raise "please implement update method"
-		end
+    def add(_recipe)
+      raise 'please implement add method'
+    end
 
-		def delete(recipe)
-			raise "please implement delete method"
-		end
-	end
+    def update(_recipe)
+      raise 'please implement update method'
+    end
+
+    def delete(_id)
+      raise 'please implement delete method'
+    end
+  end
 end

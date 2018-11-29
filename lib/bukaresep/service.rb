@@ -1,27 +1,32 @@
+# frozen_string_literal: true
+
+require 'Bukaresep/Recipe'
+
 module Bukaresep
-	class Service
-		def initialize(service: nil)
-			@service = service
-		end
 
-		def get(id)
-			@service.get(id)
-		end
+  # Class that wrap all use cases
+  class Service
+    def initialize(service: nil)
+      @service = service
+    end
 
-		def get_all
-			@service.get_all
-		end
+    def get(id)
+      @service.get(id)
+    end
 
-		def add(name, description, ingredients, instructions)
-			recipe = Bukaresep::Recipe.new(name, description, ingredients, instructions)
+    def get_all
+      @service.get_all
+    end
 
-			@service.add(recipe)
-		end
+    def add(name, description, ingredients, instructions)
+      recipe = Bukaresep::Recipe.new(name, description, ingredients, instructions)
 
-		def update(recipe)
-		end 
+      @service.add(recipe)
+    end
 
-		def delete(recipe)
-		end
-	end
+    def update(recipe) end
+
+    def delete(id) end
+  end
+
 end

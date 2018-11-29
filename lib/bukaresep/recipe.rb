@@ -1,36 +1,39 @@
+# frozen_string_literal: true
+
 require 'json'
 
 module Bukaresep
-	class Recipe
-		attr_accessor :id, :name, :description, :ingredients, :instructions
 
-		def initialize(id = nil, name, description, ingredients, instructions)
-			@id 			= id
-			@name 			= name
-			@description 	= description
-			@ingredients	= ingredients
-			@instructions	= instructions
-		end
+  # Class as recipe representation
+  class Recipe
+    attr_accessor :id, :name, :description, :ingredients, :instructions
 
-		def to_json
-			{ id: @id, name: @name, description: @description, ingredients: @ingredients, instructions: @instructions }.to_json
-		end
+    def initialize(name, description, ingredients, instructions, id = nil)
+      @id           = id
+      @name         = name
+      @description  = description
+      @ingredients  = ingredients
+      @instructions = instructions
+    end
 
-		def ==(other)
-			raise TypeError, 'Other mas be a Recipe' unless other.instance_of? Recipe
+    def to_json
+      { id: @id, name: @name, description: @description, ingredients: @ingredients, instructions: @instructions }.to_json
+    end
 
-			@id == other.id && 
-				@name == other.name &&
-				@description == other.description &&
-				@ingredients == other.ingredients &&
-				@instructions == other.instructions
-		end
+    def ==(other)
+      raise TypeError, 'Other mas be a Recipe' unless other.instance_of? Recipe
 
-		def valid?
-			return false if (@name.nil? || @name == "" || @description.nil? || @description == "" || 
-				@ingredients.nil? || @ingredients == "" || @instructions.nil? || @instructions == "")
+      @id == other.id &&
+        @name == other.name &&
+        @description == other.description &&
+        @ingredients == other.ingredients &&
+        @instructions == other.instructions
+    end
 
-			return true
-		end
-	end
+    def valid?
+      return false if @name.nil? || @name == '' || @description.nil? || @description == '' || @ingredients.nil? || @ingredients == '' || @instructions.nil? || @instructions == ''
+
+      true
+    end
+  end
 end
