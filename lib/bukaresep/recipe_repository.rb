@@ -4,15 +4,13 @@ require 'sqlite3'
 require 'bukaresep/recipe'
 require 'bukaresep/repository'
 
-DB_PATH = '/home/imam/bukalapak/probation/bukaresep-ruby/bukaresep.db'
-
 module Bukaresep
 
   # Implementation of repository
   # Repository that producer data from database
   class RecipeRepository < Bukaresep::Repository
-    def initialize(_db_path)
-      @db = SQLite3::Database.new DB_PATH
+    def initialize(db_filename)
+      @db = SQLite3::Database.new(db_filename)
     end
 
     # get recipe row by recipe_id
@@ -75,7 +73,7 @@ module Bukaresep
 
     # transform recipe row to Recipe instance
     def to_recipe(row)
-      Bukaresep::Recipe.new(row[0], row[1], row[2], row[3], row[4])
+      Bukaresep::Recipe.new(row[1], row[2], row[3], row[4], row[0])
     end
   end
 end
