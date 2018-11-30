@@ -1,6 +1,8 @@
 .env
+*.db
 *.gem
 *.rbc
+config.yml
 /.config
 /coverage/
 /InstalledFiles
