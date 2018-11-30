@@ -27,6 +27,7 @@ Include Bukaresep's `Rakefile` to your project's `Rakefile`:
 Then, do this:
 
 ```sh
+rake db:drop
 rake db:create
 ```
 
