@@ -1,45 +1,44 @@
-
 AllCops:
   TargetRubyVersion: 2.3
- 
+
 Lint/HandleExceptions:
   Enabled: true
- 
+
 Metrics/LineLength:
   Enabled: false
- 
+
 Metrics/MethodLength:
   Enabled: false
- 
+
 Metrics/ClassLength:
   Enabled: false
- 
+
 Metrics/BlockLength:
   Enabled: false
- 
+
 Metrics/AbcSize:
   Enabled: false
- 
+
 Metrics/CyclomaticComplexity:
   Enabled: false
- 
+
 Metrics/PerceivedComplexity:
   Enabled: false
- 
+
 Style/EmptyLinesAroundModuleBody:
   Enabled: false
- 
+
 Style/EmptyLinesAroundClassBody:
   Enabled: false
- 
+
 Style/EmptyLinesAroundBlockBody:
   Enabled: false
- 
+
 Style/SpaceBeforeBlockBraces:
   EnforcedStyle: no_space
- 
+
 Style/AsciiComments:
   Enabled: false
- 
+
 Style/Semicolon:
   AllowAsExpressionSeparator: true
