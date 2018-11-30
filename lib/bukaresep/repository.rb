@@ -2,7 +2,7 @@
 
 module Bukaresep
 
-  # Repository interface
+  # Repository is a class like an interface that represent / wrap access to data source
   class Repository
     def get(_id)
       raise 'please implement get method'
