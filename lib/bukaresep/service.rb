@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'Bukaresep/Recipe'
+require 'bukaresep/recipe'
 
 module Bukaresep
 
@@ -21,12 +21,20 @@ module Bukaresep
     def add(name, description, ingredients, instructions)
       recipe = Bukaresep::Recipe.new(name, description, ingredients, instructions)
 
+      return false unless recipe.valid?
+
       @service.add(recipe)
     end
 
-    def update(recipe) end
+    def update(recipe)
+      return false unless recipe.valid?
 
-    def delete(id) end
+      @service.update(recipe)
+    end
+
+    def delete(id)
+      @service.delete(id)
+    end
   end
 
 end
