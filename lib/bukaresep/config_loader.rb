@@ -2,6 +2,8 @@
 
 require 'yaml'
 
+DEFAULT_CONFIG_FILENAME = 'config.yml'
+
 module Bukaresep
 
   # Class for handle all configuration for buekaresep gem
@@ -10,9 +12,9 @@ module Bukaresep
 
     # Load is the only method for this class to get database filename from config file
     #
-    # @param [String] config_filename: a path of bukaresep configuration
-    def self.load(config_filename)
-      config = YAML.load_file(config_filename)
+    # @return db sqlite3 filename
+    def self.load()
+      config = YAML.load_file(DEFAULT_CONFIG_FILENAME)
       environment = ENV['RACK_ENV'] || 'development'
       filename = config[environment]['database']['filename']
 

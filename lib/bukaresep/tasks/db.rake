@@ -3,14 +3,12 @@
 require 'sqlite3'
 require 'bukaresep/config_loader'
 
-DEFAULT_CONFIG_FILENAME = 'config.yml'
-
 namespace :db do
   desc 'Create recipe table'
   task :create do
 
     # read db filename from config file
-    db_filename = Bukaresep::ConfigLoader::load(DEFAULT_CONFIG_FILENAME)
+    db_filename = Bukaresep::ConfigLoader::load
 
     db = SQLite3::Database.open(db_filename)
 
@@ -33,7 +31,8 @@ namespace :db do
   task :drop do
 
     # read db filename from config file
-    db_filename = Bukaresep::ConfigLoader::load(DEFAULT_CONFIG_FILENAME)
+    db_filename = Bukaresep::ConfigLoader::load
+
 
     db = SQLite3::Database.open(db_filename)
 

@@ -1,9 +1,6 @@
 RSpec.describe Bukaresep::RecipeRepository do
-  # open config file
-  let(:config_filename) { File.expand_path('../../config.yml', File.dirname(__FILE__)) }
-
   # read db filename from config file
-  let(:db_filename) { Bukaresep::ConfigLoader::load(config_filename) }
+  let(:db_filename) { Bukaresep::ConfigLoader::load }
 
   let(:repository) { described_class.new(db_filename) }
 
