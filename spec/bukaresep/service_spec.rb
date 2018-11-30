@@ -6,7 +6,7 @@ RSpec.describe Bukaresep::Service do
   let(:recipe_repository){ double() }
 
   # add mock repository to service
-  let(:service) { described_class.new(service: recipe_repository) }
+  let(:service) { described_class.new(recipe_repository) }
 
   # sample recipe data
   let(:valid_recipe)  { Bukaresep::Recipe.new('food1', 'recipe desc', 'recipe ingredients', 'recipe instructions') }

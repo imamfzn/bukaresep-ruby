@@ -12,7 +12,7 @@ module Bukaresep
     # Initialize is a constructor of this class instance
     #
     # @param [RecipeRepository] service: an instance of Bukaresep::RecipeRepository
-    def initialize(service: nil)
+    def initialize(service)
       @service = service
     end
 
