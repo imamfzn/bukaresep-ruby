@@ -62,7 +62,7 @@ require 'bukaresep'
 # load configuration file (config.yml) to get db filename
 filename = Bukaresep::ConfigLoader::load
 repository = Bukaresep::RecipeRepository.new
-recipe_service = Rutodo::Service.new(repository)
+recipe_service = Bukaresep::Service.new(repository)
 ```
 
 Then, you can use `bukaresep service` to manage your recipes.
