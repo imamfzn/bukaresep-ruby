@@ -15,7 +15,7 @@ namespace :db do
 
     db = SQLite3::Database.open(db_filename)
 
-    puts "creating recipe schema/table on #{db_filename}"
+    puts "Creating recipe schema/table on #{db_filename}"
 
     # executing sql syntax to create recipe schema if schema doesnt exists
     db.execute <<-SQL
@@ -29,5 +29,24 @@ namespace :db do
       SQL
 
       puts "schema has been created on #{db_filename}"
+  end
+
+  task :drop do
+    # open config file
+    config_filename = File.expand_path('../../../config.yml', File.dirname(__FILE__))
+
+    # read db filename from config file
+    db_filename = Bukaresep::ConfigLoader::load(config_filename)
+
+    db = SQLite3::Database.open(db_filename)
+
+    puts "Dropping recipe table from #{db_filename}"
+
+    db.execute <<-SQL
+      DROP TABLE IF EXISTS recipe;
+      SQL
+
+    puts "schema has been dropped on #{db_filename}"
+
   end
 end
