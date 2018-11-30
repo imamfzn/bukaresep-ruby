@@ -8,7 +8,7 @@ module Bukaresep
   class Recipe
     attr_accessor :id, :name, :description, :ingredients, :instructions
 
-    def initialize(name, description, ingredients, instructions, id = nil)
+    def initialize(name = '', description = '', ingredients = '', instructions = '', id = nil)
       @id           = id
       @name         = name
       @description  = description
