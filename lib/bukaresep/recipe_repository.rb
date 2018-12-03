@@ -10,11 +10,11 @@ module Bukaresep
   # Repository that represent access to the data source
   class RecipeRepository < Bukaresep::Repository
 
-    # Initialize is a construcotr of RecipeRepository
+    # Initialize is a constructor of RecipeRepository
     #
-    # @param [String] db_filename: a filename that represent database path for sqlite3
-    def initialize(db_filename)
-      @db = SQLite3::Database.new(db_filename)
+    # @param [SQLite3] db: an instance of sqlite3 database connection
+    def initialize(db)
+      @db = db
     end
 
     # Get will retrive row recipe from database by particular id
