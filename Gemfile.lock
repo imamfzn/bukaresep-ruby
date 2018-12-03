@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    bukaresep (0.1.0)
+    bukaresep (0.2.0)
       rake
       sqlite3
 
