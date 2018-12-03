@@ -33,6 +33,35 @@ RSpec.describe Bukaresep::Service do
     end
   end
 
+  describe '#get' do
+    context 'get recipe by id' do
+      let(:recipe){ Bukaresep::Recipe.new('food1', 'recipe desc', 'recipe ingredients', 'recipe instructions', 1) }
+
+      before(:each) do
+        allow(recipe_repository).to receive(:get){ recipe }
+      end
+
+      it{ expect(service.get(1)).to eq(recipe) }
+    end
+
+    context 'get all recipe' do
+      let(:recipes) do
+        [
+          Bukaresep::Recipe.new('food1', 'recipe desc', 'recipe ingredients', 'recipe instructions', 1),
+          Bukaresep::Recipe.new('food1', 'recipe desc', 'recipe ingredients', 'recipe instructions', 2),
+          Bukaresep::Recipe.new('food1', 'recipe desc', 'recipe ingredients', 'recipe instructions', 3)
+        ]
+      end
+
+      before(:each) do
+        allow(recipe_repository).to receive(:all){ recipes }
+      end
+
+      it{ expect(service.all).to be_an_instance_of(Array) }
+      it{ expect(service.all).to all(be_an(Bukaresep::Recipe)) }
+    end
+  end
+
   describe '#update' do
     before(:each) do
       #  add stub 'update' to mock Bukaresep::RecipeFactory
@@ -53,4 +82,5 @@ RSpec.describe Bukaresep::Service do
       end
     end
   end
+
 end
