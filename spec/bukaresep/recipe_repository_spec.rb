@@ -46,9 +46,9 @@ RSpec.describe Bukaresep::RecipeRepository do
     context 'get all recipe' do
       let(:recipe_rows) do
         [
-          [recipe_name, recipe_desc, recipe_ingredients, recipe_instructions, 1],
-          [recipe_name, recipe_desc, recipe_ingredients, recipe_instructions, 2],
-          [recipe_name, recipe_desc, recipe_ingredients, recipe_instructions, 3]
+          [1, recipe_name, recipe_desc, recipe_ingredients, recipe_instructions],
+          [1, recipe_name, recipe_desc, recipe_ingredients, recipe_instructions],
+          [1, recipe_name, recipe_desc, recipe_ingredients, recipe_instructions]
         ]
       end
 
