@@ -59,10 +59,18 @@ Set up bukaresep dependency first:
 
 ```ruby
 require 'bukaresep'
+require 'sqlite3'
 
 # load configuration file (config.yml) to get db filename
-filename = Bukaresep::ConfigLoader::load
-repository = Bukaresep::RecipeRepository.new
+filename = Bukaresep::ConfigLoader.load
+
+# create db instance from sqlite3 using db filename
+db = SQLite3::Database.new(filename)
+
+# create recipe repository for data access
+repository = Bukaresep::RecipeRepository.new(db)
+
+# finally create recipe service
 recipe_service = Bukaresep::Service.new(repository)
 ```
 
