@@ -3,14 +3,14 @@
 RSpec.describe Bukaresep::Service do
 
   # mock of Bukaresep::RecipeFactory
-  let(:recipe_repository){ double() }
+  let(:recipe_repository){ double }
 
   # add mock repository to service
-  let(:service) { described_class.new(recipe_repository) }
+  let(:service){ described_class.new(recipe_repository) }
 
   # sample recipe data
-  let(:valid_recipe)  { Bukaresep::Recipe.new('food1', 'recipe desc', 'recipe ingredients', 'recipe instructions') }
-  let(:invalid_recipe) { Bukaresep::Recipe.new(nil, 'recipe desc', 'recipe ingredients', 'recipe instructions') }
+  let(:valid_recipe){ Bukaresep::Recipe.new('food1', 'recipe desc', 'recipe ingredients', 'recipe instructions') }
+  let(:invalid_recipe){ Bukaresep::Recipe.new(nil, 'recipe desc', 'recipe ingredients', 'recipe instructions') }
 
   describe '#add' do
     before(:each) do

@@ -1,12 +1,14 @@
+# frozen_string_literal: true
+
 RSpec.describe Bukaresep::RecipeRepository do
   # read db filename from config file
-  let(:db_filename) { Bukaresep::ConfigLoader::load }
+  let(:db_filename){ Bukaresep::ConfigLoader.load }
 
-  let(:repository) { described_class.new(db_filename) }
+  let(:repository){ described_class.new(db_filename) }
 
   describe '#insert_recipe' do
-    let(:valid_recipe)  { Bukaresep::Recipe.new('food1', 'recipe desc', 'recipe ingredients', 'recipe instructions') }
-    let(:invalid_recipe) { Bukaresep::Recipe.new(nil, 'recipe desc', 'recipe ingredients', 'recipe instructions') }
+    let(:valid_recipe){ Bukaresep::Recipe.new('food1', 'recipe desc', 'recipe ingredients', 'recipe instructions') }
+    let(:invalid_recipe){ Bukaresep::Recipe.new(nil, 'recipe desc', 'recipe ingredients', 'recipe instructions') }
 
     context 'insert valid recipe' do
       it 'return new recipe object (not nil)' do
@@ -22,7 +24,7 @@ RSpec.describe Bukaresep::RecipeRepository do
     end
 
     context 'insert invalid recipe' do
-      it { expect { repository.add(invalid_recipe) }.to raise_error(TypeError) }
+      it{ expect{ repository.add(invalid_recipe) }.to raise_error(TypeError) }
     end
   end
 
@@ -54,13 +56,13 @@ RSpec.describe Bukaresep::RecipeRepository do
       end
 
       context 'id not exists' do
-        it { expect(repository.get(-1)).to be_nil }
+        it{ expect(repository.get(-1)).to be_nil }
       end
     end
 
     context 'get all recipe' do
-      it { expect(repository.all).to be_an_instance_of(Array) }
-      it { expect(repository.all).to all(be_an(Bukaresep::Recipe)) }
+      it{ expect(repository.all).to be_an_instance_of(Array) }
+      it{ expect(repository.all).to all(be_an(Bukaresep::Recipe)) }
     end
 
     context 'update recipe' do
@@ -75,7 +77,7 @@ RSpec.describe Bukaresep::RecipeRepository do
     end
 
     context 'delete recipe by id' do
-      it { expect(repository.delete(recipes[0].id)).to be true }
+      it{ expect(repository.delete(recipes[0].id)).to be true }
     end
   end
 end

@@ -2,6 +2,8 @@ PATH
   remote: .
   specs:
     bukaresep (0.1.0)
+      rake
+      sqlite3
 
 GEM
   remote: https://rubygems.org/
