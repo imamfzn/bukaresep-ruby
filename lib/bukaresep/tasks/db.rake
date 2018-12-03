@@ -12,7 +12,7 @@ namespace :db do
 
     db = SQLite3::Database.open(db_filename)
 
-    puts "Creating recipe schema/table on #{db_filename}"
+    puts "Creating recipe schema/table on #{db_filename}."
 
     # executing sql syntax to create recipe schema if schema doesnt exists
     db.execute('CREATE TABLE IF NOT EXISTS recipe (
@@ -23,7 +23,7 @@ namespace :db do
         recipe_instructions TEXT NOT NULL
         );')
 
-    puts "schema has been created on #{db_filename}"
+    puts "Schema has been created on #{db_filename}."
   end
 
   task :drop do
@@ -33,11 +33,11 @@ namespace :db do
 
     db = SQLite3::Database.open(db_filename)
 
-    puts "Dropping recipe table from #{db_filename}"
+    puts "Dropping recipe table from #{db_filename}."
 
     db.execute('DROP TABLE IF EXISTS recipe')
 
-    puts "schema has been dropped on #{db_filename}"
+    puts "Schema has been dropped on #{db_filename}."
 
   end
 end
