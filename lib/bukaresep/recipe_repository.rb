@@ -48,6 +48,7 @@ module Bukaresep
 
     # Add will insert new recipe row to recipe table
     #
+    # Raise [TypeError] when recipe is not valid
     # @param [Bukaresep::Recipe] recipe: recipe instance that will be insert to databases
     # @return [Bukaresep::Recipe] an inserted recipe instance with recipe id from database
     def add(recipe)

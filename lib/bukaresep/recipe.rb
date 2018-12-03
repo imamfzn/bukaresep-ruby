@@ -33,6 +33,7 @@ module Bukaresep
 
     # == is a override method from equality method to check equality between two recipes instance
     #
+    # Raise [TypeError] when other is not instance of Recipe
     # @param [Recipe] other: Recipe instance to be check equality
 
     def ==(other)
