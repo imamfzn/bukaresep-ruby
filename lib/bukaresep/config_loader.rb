@@ -13,7 +13,7 @@ module Bukaresep
     # Load is the only method for this class to get database filename from config file
     #
     # @return db sqlite3 filename
-    def self.load()
+    def self.load
       config = YAML.load_file(DEFAULT_CONFIG_FILENAME)
       environment = ENV['RACK_ENV'] || 'development'
       filename = config[environment]['database']['filename']

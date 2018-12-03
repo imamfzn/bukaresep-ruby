@@ -59,8 +59,8 @@ RSpec.describe Bukaresep::RecipeRepository do
     end
 
     context 'get all recipe' do
-      it { expect(repository.get_all).to be_an_instance_of(Array) }
-      it { expect(repository.get_all).to all(be_an(Bukaresep::Recipe)) }
+      it { expect(repository.all).to be_an_instance_of(Array) }
+      it { expect(repository.all).to all(be_an(Bukaresep::Recipe)) }
     end
 
     context 'update recipe' do

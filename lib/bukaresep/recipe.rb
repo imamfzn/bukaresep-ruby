@@ -9,6 +9,7 @@ module Bukaresep
     attr_accessor :id, :name, :description, :ingredients, :instructions
 
     # Initialize is a constructor of this class instance
+    #
     # @param [String] name: represent food name
     # @param [String] description: represent recipe of food description
     # @param [String] ingredients: represent ingredients that need for making particular food
@@ -24,12 +25,13 @@ module Bukaresep
     end
 
     # To json will transform recipe instance to json string format
+    #
     # @return [String] recipe in json format
     def to_json
       { id: @id, name: @name, description: @description, ingredients: @ingredients, instructions: @instructions }.to_json
     end
 
-    # Override equality method to check equality betweet two recipes instance
+    # == is a override method from equality method to check equality between two recipes instance
     #
     # @param [Recipe] other: Recipe instance to be check equality
 
@@ -43,8 +45,9 @@ module Bukaresep
         @instructions == other.instructions
     end
 
-    # Validity method to check recipe following requirement
+    # Valid is a method to check recipe following requirement
     # Recipe will valid if value of all attributes not nil / empty string except id
+    #
     # @return true if equal and vice versa
     def valid?
       return false if @name.nil? || @name == '' || @description.nil? || @description == '' || @ingredients.nil? || @ingredients == '' || @instructions.nil? || @instructions == ''

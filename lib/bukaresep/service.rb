@@ -27,7 +27,7 @@ module Bukaresep
     # Get all will retrieve all recipes from storage
     #
     # @return [Array[Bukaresep::Recipe]]: all recipe from the storage
-    def get_all
+    def all
       @service.get_all
     end
 
@@ -59,6 +59,7 @@ module Bukaresep
     end
 
     # Delete will remove recipe from storage with particular id
+    #
     # @param [Integer] id: id of recipe that will be deleted from storage
     # @return true after deleting particular recipe
     def delete(id)

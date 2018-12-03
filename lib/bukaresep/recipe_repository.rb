@@ -32,10 +32,10 @@ module Bukaresep
       raise exception
     end
 
-    # Get all will retrieve all rows from recipe table
+    # All will retrieve all rows from recipe table
     #
     # @return [Array[Bukaresep::Recipe]] is a transformed recipes instance from rows of recipe
-    def get_all
+    def all
       begin
         rows = @db.execute('SELECT * FROM recipe')
         recipes = rows.map{ |row| to_recipe(row) }

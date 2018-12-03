@@ -8,7 +8,7 @@ module Bukaresep
       raise 'please implement get method'
     end
 
-    def get_all
+    def all
       raise 'please implement get_all method'
     end
 
