@@ -28,7 +28,7 @@ module Bukaresep
     #
     # @return [Array[Bukaresep::Recipe]]: all recipe from the storage
     def all
-      @service.get_all
+      @service.all
     end
 
     # Add a new recipe to the storage
