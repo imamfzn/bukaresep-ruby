@@ -20,7 +20,7 @@ RSpec.describe Bukaresep::RecipeRepository do
     before(:each) do
       allow(db).to receive(:execute){ nil }
       allow(db).to receive(:last_insert_row_id){ recipe_id }
-      allow(db).to receive(:get_first_row){ recipe_row  }
+      allow(db).to receive(:get_first_row){ recipe_row }
     end
 
     context 'insert valid recipe' do
