@@ -105,5 +105,5 @@ recipes = recipe_service.all
 ### Delete a recipe
 
 ```ruby
-recipe_service.delete(recipe)
+recipe_service.delete(1) # the recipe;s id
 ```
