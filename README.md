@@ -14,7 +14,7 @@ Then do a `bundle install`.
 
 After that, create configuration file named `config.yml` that configure the database filename. Example look at `sample.config.yml`
 
-### Migrate database
+### Create database
 
 Include Bukaresep's `Rakefile` to your project's `Rakefile`:
 
@@ -51,7 +51,7 @@ A recipe consists of:
 * description (string, required),
 * ingredients (string, required),
 * instructions (string, required),
-* ID (integer, required),
+* id (integer, required),
 
 ## Usage
 
@@ -93,13 +93,13 @@ recipe = recipe_service.update(recipe)
 ### Retrieve detail of a recipe
 
 ```ruby
-recipe = recipe_service.get(1) # the recipe's ID
+recipe = recipe_service.get(1) # the recipe's id
 ```
 
 ### List all recipes
 
 ```ruby
-reicipes = reicipe_service.get_all
+recipes = recipe_service.all
 ```
 
 ### Delete a recipe
