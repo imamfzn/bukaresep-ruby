@@ -31,7 +31,7 @@ module Bukaresep
       @service.all
     end
 
-    # Add a new recipe to the storage
+    # Add will add a new recipe to the storage
     #
     # @param [String] name: name of food for particular recipe
     # @param [String] description: description of food for particular recipe
