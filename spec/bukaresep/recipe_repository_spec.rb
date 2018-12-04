@@ -4,23 +4,23 @@ RSpec.describe Bukaresep::RecipeRepository do
   let(:db){ double('database instance mock') }
   let(:repository){ described_class.new(db) }
 
-  let(:recipe_id){ 1 }
-  let(:recipe_name){ 'chicken katsu' }
-  let(:recipe_desc){ 'oriental food' }
-  let(:recipe_ingredients){ 'chciken katsu ingredients' }
-  let(:recipe_instructions){ 'chicken katsu instructions' }
+  let(:id){ 1 }
+  let(:name){ 'chicken katsu' }
+  let(:desc){ 'oriental food' }
+  let(:ingredients){ 'chciken katsu ingredients' }
+  let(:instructions){ 'chicken katsu instructions' }
 
-  let(:recipe_row){ [recipe_id, recipe_name, recipe_desc, recipe_ingredients, recipe_instructions] }
+  let(:row){ [id, name, desc, ingredients, instructions] }
 
-  let(:valid_recipe){ Bukaresep::Recipe.new(recipe_name, recipe_desc, recipe_ingredients, recipe_instructions) }
-  let(:inserted_recipe){ Bukaresep::Recipe.new(recipe_name, recipe_desc, recipe_ingredients, recipe_instructions, recipe_id) }
-  let(:invalid_recipe){ Bukaresep::Recipe.new(nil, recipe_desc, recipe_ingredients, recipe_instructions) }
+  let(:valid_recipe){ Bukaresep::Recipe.new(name, desc, ingredients, instructions) }
+  let(:inserted_recipe){ Bukaresep::Recipe.new(name, desc, ingredients, instructions, id) }
+  let(:invalid_recipe){ Bukaresep::Recipe.new(nil, desc, ingredients, instructions) }
 
   describe '#insert recipe' do
     before(:each) do
       allow(db).to receive(:execute){ nil }
-      allow(db).to receive(:last_insert_row_id){ recipe_id }
-      allow(db).to receive(:get_first_row){ recipe_row }
+      allow(db).to receive(:last_insert_row_id){ id }
+      allow(db).to receive(:get_first_row){ row }
     end
 
     context 'insert valid recipe' do
@@ -37,23 +37,23 @@ RSpec.describe Bukaresep::RecipeRepository do
   describe 'get recipe' do
     context 'get recipe by id' do
       before(:each) do
-        allow(db).to receive(:get_first_row){ recipe_row }
+        allow(db).to receive(:get_first_row){ row }
       end
 
-      it{ expect(repository.get(recipe_id)).to eq(inserted_recipe) }
+      it{ expect(repository.get(id)).to eq(inserted_recipe) }
     end
 
     context 'get all recipe' do
-      let(:recipe_rows) do
+      let(:rows) do
         [
-          [1, recipe_name, recipe_desc, recipe_ingredients, recipe_instructions],
-          [1, recipe_name, recipe_desc, recipe_ingredients, recipe_instructions],
-          [1, recipe_name, recipe_desc, recipe_ingredients, recipe_instructions]
+          [1, name, desc, ingredients, instructions],
+          [1, name, desc, ingredients, instructions],
+          [1, name, desc, ingredients, instructions]
         ]
       end
 
       before(:each) do
-        allow(db).to receive(:execute){ recipe_rows }
+        allow(db).to receive(:execute){ rows }
       end
 
       it{ expect(repository.all).to be_an_instance_of(Array) }
@@ -63,13 +63,13 @@ RSpec.describe Bukaresep::RecipeRepository do
   end
 
   describe '#update recipe' do
-    let(:updated_recipe_name){ 'chicken katsu v2.0.0' }
-    let(:updated_recipe_row){ [recipe_id, updated_recipe_name, recipe_desc, recipe_ingredients, recipe_instructions] }
-    let(:updated_recipe){ Bukaresep::Recipe.new(updated_recipe_name, recipe_desc, recipe_ingredients, recipe_instructions, recipe_id) }
+    let(:updated_name){ 'chicken katsu v2.0.0' }
+    let(:updated_row){ [id, updated_name, desc, ingredients, instructions] }
+    let(:updated_recipe){ Bukaresep::Recipe.new(updated_name, desc, ingredients, instructions, id) }
 
     before(:each) do
       allow(db).to receive(:execute){ nil }
-      allow(db).to receive(:get_first_row){ updated_recipe_row }
+      allow(db).to receive(:get_first_row){ updated_row }
     end
 
     context 'update recipe' do

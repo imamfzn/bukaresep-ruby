@@ -22,7 +22,7 @@ module Bukaresep
     # @return [Bukaresep::Recipe] is a transformed recipe row to recipe instance
     #                             but return nil if id not found
     def get(id)
-      row = @db.get_first_row('SELECT * FROM recipe WHERE recipe_id = ?', [id])
+      row = @db.get_first_row('SELECT * FROM recipe WHERE id = ?', [id])
 
       return nil if row.nil?
 
@@ -54,7 +54,7 @@ module Bukaresep
       raise TypeError, 'Invalid recipe' unless recipe.valid?
 
       begin
-        @db.execute('INSERT INTO recipe (recipe_name, recipe_description, recipe_ingredients, recipe_instructions)
+        @db.execute('INSERT INTO recipe (name, description, ingredients, instructions)
           VALUES (?,?,?,?)', [recipe.name, recipe.description, recipe.ingredients, recipe.instructions])
 
         get(@db.last_insert_row_id)
@@ -68,8 +68,8 @@ module Bukaresep
     # @param [Bukaresep::Recipe] recipe: recipe instance that represent current value
     # @return [Bukaresep::Recipe] recipe: updated recipe instance
     def update(recipe)
-      @db.execute('UPDATE recipe SET recipe_name = ?, recipe_description = ?, recipe_ingredients = ?, recipe_instructions = ?
-        WHERE recipe_id = ?', [recipe.name, recipe.description, recipe.ingredients, recipe.instructions, recipe.id])
+      @db.execute('UPDATE recipe SET name = ?, description = ?, ingredients = ?, instructions = ?
+        WHERE id = ?', [recipe.name, recipe.description, recipe.ingredients, recipe.instructions, recipe.id])
 
       get(recipe.id)
     rescue SQLite3::Exception => exception
@@ -82,7 +82,7 @@ module Bukaresep
     # @return true after row deleted / row not found by particular id
     def delete(id)
       begin
-        @db.execute('DELETE FROM recipe WHERE recipe_id = ?', [id])
+        @db.execute('DELETE FROM recipe WHERE id = ?', [id])
       rescue SQLite3::Exception => exception
         raise exception
       end
