@@ -107,3 +107,42 @@ recipes = recipe_service.all
 ```ruby
 recipe_service.delete(1) # the recipe;s id
 ```
+
+## Onboarding & Development Guide
+
+### Prerequisite
+
+1. Git
+2. Ruby
+3. Bundler
+4. SQLite3
+
+### Setup
+
+1. Clone this repository
+```bash
+git clone -b development https://github.com/imamfzn/bukaresep-ruby.git
+```
+2. Install required modules
+```bash
+bundle install
+```
+3. Build & Install Gem
+```bash
+rake install
+```
+
+### Development Guide
+
+#### Using rake
+
+1. Create config file from ```sample.config.yml``` and match your configuration
+```bash
+cp sample.config.yml config.yml
+```
+2. Run ```rake test``` to test the gem (spec / unit test & rubocop lint)
+3. For creating database
+```bash
+rake db:drop
+rake db:create
+```
