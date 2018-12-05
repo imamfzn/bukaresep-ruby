@@ -11,4 +11,5 @@ gem 'sqlite3', '~>1.3.13'
 
 group :test do
   gem 'rspec', '~>3.8.0'
+  gem 'simplecov', '~>0.16.1', require: false
 end
