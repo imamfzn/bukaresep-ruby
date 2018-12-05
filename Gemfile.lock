@@ -2,8 +2,8 @@ PATH
   remote: .
   specs:
     bukaresep (0.2.0)
-      rake
-      sqlite3
+      rake (~> 12.3.1)
+      sqlite3 (~> 1.3.13)
 
 GEM
   remote: https://rubygems.org/
@@ -30,9 +30,9 @@ PLATFORMS
 
 DEPENDENCIES
   bukaresep!
-  rake
-  rspec
-  sqlite3
+  rake (~> 12.3.1)
+  rspec (~> 3.8.0)
+  sqlite3 (~> 1.3.13)
 
 BUNDLED WITH
    1.17.1

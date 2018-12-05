@@ -6,9 +6,9 @@ git_source(:github){ |repo_name| "https://github.com/#{repo_name}" }
 
 gemspec
 
-gem 'rake'
-gem 'sqlite3'
+gem 'rake', '~>12.3.1'
+gem 'sqlite3', '~>1.3.13'
 
 group :test do
-  gem 'rspec'
+  gem 'rspec', '~>3.8.0'
 end
