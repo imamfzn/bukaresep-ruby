@@ -26,6 +26,7 @@ namespace :db do
     puts "Schema has been created on #{db_filename}."
   end
 
+  desc 'Drop recipe table'
   task :drop do
 
     # read db filename from config file
