@@ -10,7 +10,7 @@ gem 'rake', '~>12.3.1'
 gem 'sqlite3', '~>1.3.13'
 
 group :test, :development do
-  gem 'bundler'
+  gem 'bundler', '~>1.17.1'
   gem 'rspec', '~>3.8.0'
   gem 'rubocop', '~>0.60.0'
   gem 'simplecov', '~>0.16.1', require: false
