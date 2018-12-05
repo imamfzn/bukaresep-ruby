@@ -1,0 +1,11 @@
+development:
+  database:
+    filename: 'bukaresep-dev.db'
+
+test:
+  database:
+    filename: 'bukaresep-test.db'
+
+production:
+  database:
+    filename: 'bukaresep.db'
