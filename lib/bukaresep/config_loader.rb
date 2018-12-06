@@ -20,7 +20,7 @@ module Bukaresep
 
       filename
     rescue SystemCallError
-      $stderr.print "Error on read file from #{config_file}\n"
+      $stderr.print "Error on read file from #{DEFAULT_CONFIG_FILENAME}\n"
       raise
     end
   end
