@@ -59,10 +59,11 @@ Set up bukaresep dependency first:
 
 ```ruby
 require 'bukaresep'
+require 'dotenv'
 require 'sqlite3'
 
-# load configuration file (config.yml) to get db filename
-filename = Bukaresep::ConfigLoader.load
+# load configuration file env to get db filename
+filename = ENV['BUKARESEP_DB_FILENAME']
 
 # create db instance from sqlite3 using db filename
 db = SQLite3::Database.new(filename)
@@ -136,9 +137,9 @@ rake install
 
 #### Using rake
 
-1. Create config file from ```sample.config.yml``` and match your configuration
+1. Set db filename in your .env
 ```bash
-cp sample.config.yml config.yml
+cp sample.env .env
 ```
 2. Run ```rake test``` to test the gem (spec / unit test & rubocop lint)
 3. For creating database
