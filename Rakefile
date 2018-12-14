@@ -18,7 +18,3 @@ desc 'Lint code'
 RuboCop::RakeTask.new
 
 Bundler::GemHelper.install_tasks
-
-spec = Gem::Specification.find_by_name 'bukaresep'
-rakefile = "#{spec.gem_dir}/lib/bukaresep/Rakefile"
-load rakefile
