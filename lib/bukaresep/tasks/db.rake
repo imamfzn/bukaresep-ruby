@@ -1,14 +1,14 @@
 # frozen_string_literal: true
 
 require 'sqlite3'
-require 'bukaresep/config_loader'
+require 'dotenv/load'
 
 namespace :db do
   desc 'Create recipe table'
   task :create do
 
-    # read db filename from config file
-    db_filename = Bukaresep::ConfigLoader.load
+    # read db filename from env
+    db_filename = ENV['BUKARESEP_DB_FILENAME'] || 'bukaresep.sqlite3'
 
     db = SQLite3::Database.open(db_filename)
 
@@ -29,8 +29,8 @@ namespace :db do
   desc 'Drop recipe table'
   task :drop do
 
-    # read db filename from config file
-    db_filename = Bukaresep::ConfigLoader.load
+    # read db filename from env
+    db_filename = ENV['BUKARESEP_DB_FILENAME'] || 'bukaresep.sqlite3'
 
     db = SQLite3::Database.open(db_filename)
 
