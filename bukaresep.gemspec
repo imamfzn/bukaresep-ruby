@@ -33,5 +33,4 @@ Gem::Specification.new do |spec|
 
   spec.add_runtime_dependency 'rake', '~>12.3.1', ' >= 12.3.0'
   spec.add_runtime_dependency 'sqlite3', '~>1.3.13', '>= 1.3.0'
-
 end

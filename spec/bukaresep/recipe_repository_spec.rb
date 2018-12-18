@@ -2,6 +2,12 @@
 
 RSpec.describe Bukaresep::RecipeRepository do
   let(:db){ double('database instance mock') }
+
+  # mocking execute for accepting create table in repository
+  before(:each) do
+    allow(db).to receive(:execute){ nil }
+  end
+
   let(:repository){ described_class.new(db) }
 
   let(:id){ 1 }

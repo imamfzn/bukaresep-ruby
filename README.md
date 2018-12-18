@@ -12,25 +12,6 @@ gem "bukaresep", :git => "https://github.com/imamfzn/bukaresep-ruby.git", :branc
 
 Then do a `bundle install`.
 
-After that, create configuration file named `config.yml` that configure the database filename. Example look at `sample.config.yml`
-
-### Create database
-
-Include Bukaresep's `Rakefile` to your project's `Rakefile`:
-
-```ruby
-  spec = Gem::Specification.find_by_name 'bukaresep'
-  rakefile = "#{spec.gem_dir}/lib/bukaresep/Rakefile"
-  load rakefile
-```
-
-Then, do this:
-
-```sh
-rake db:drop
-rake db:create
-```
-
 ## Dependency
 
 This gem needs a SQLite3 database to store recipes.
@@ -61,8 +42,9 @@ Set up bukaresep dependency first:
 require 'bukaresep'
 require 'sqlite3'
 
-# load configuration file (config.yml) to get db filename
-filename = Bukaresep::ConfigLoader.load
+# define your db sqlite filename / path
+# bukaresep will automatically creating necessary table if not exists
+filename = 'example-db-filename.sqlite3'
 
 # create db instance from sqlite3 using db filename
 db = SQLite3::Database.new(filename)
@@ -135,14 +117,4 @@ rake install
 ### Development Guide
 
 #### Using rake
-
-1. Create config file from ```sample.config.yml``` and match your configuration
-```bash
-cp sample.config.yml config.yml
-```
-2. Run ```rake test``` to test the gem (spec / unit test & rubocop lint)
-3. For creating database
-```bash
-rake db:drop
-rake db:create
-```
+1. Run ```rake test``` to test the gem (spec / unit test & rubocop lint)

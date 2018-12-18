@@ -10,10 +10,13 @@ module Bukaresep
   class RecipeRepository < Bukaresep::Repository
 
     # Initialize is a constructor of RecipeRepository
+    # It will setup recipe table if table is not present
     #
     # @param [SQLite3] db: an instance of sqlite3 database connection
     def initialize(db)
       @db = db
+
+      create_table
     end
 
     # Get will retrive row recipe from database by particular id
@@ -97,5 +100,22 @@ module Bukaresep
     def to_recipe(row)
       Bukaresep::Recipe.new(row[1], row[2], row[3], row[4], row[0])
     end
+
+    private
+
+    # Create table will creating recipe table
+    # if table is not exists on database
+    def create_table
+      @db.execute('CREATE TABLE IF NOT EXISTS recipe (
+        id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+        name TEXT NOT NULL,
+        description TEXT NOT NULL,
+        ingredients TEXT NOT NULL,
+        instructions TEXT NOT NULL
+        );')
+    rescue SQLite3::Exception => exception
+      raise exception
+    end
+
   end
 end
